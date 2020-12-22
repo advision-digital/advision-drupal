@@ -4,7 +4,7 @@
 Extends the [Drupal official image](https://hub.docker.com/_/drupal/).
 # Extensions 
 PHP Webp is enabled 
-Email support was added, with Postfix. The environment variable SMTP_RELAY_HOST configures the relayhost.
+Email support was added, with Postfix. The environment variable SMTP_RELAYHOST configures the relayhost.
 
-[Advision Digital](https://www.advision-digital.de/)
+[Advision Digital](https://www.advision-digital.de/)  
 [Advision Digital](https://hz-svc-drupal.advision-digital.de/)
