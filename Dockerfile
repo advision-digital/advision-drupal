@@ -24,11 +24,10 @@ RUN { \
 RUN composer --working-dir=/opt/drupal require drupal/upgrade_status:^3.0
 
 # Add Email Capabilities
-RUN apt-get install -y --no-install-recommends mailutils postfix &&\
-	postconf inet_interfaces=loopback-only
+RUN apt-get install -y --no-install-recommends mailutils postfix
 
 # Drupal config
 RUN mkdir /opt/drupal/private && chown www-data:www-data /opt/drupal/private
 
 # Add services to the entrypoint
-RUN sed '$i postconf relayhost=$SMTP_RELAYHOST && service postfix start' /usr/local/bin/docker-php-entrypoint | tee /usr/local/bin/docker-php-entrypoint
+RUN sed '$i service postfix start' /usr/local/bin/docker-php-entrypoint | tee /usr/local/bin/docker-php-entrypoint
