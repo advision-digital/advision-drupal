@@ -30,4 +30,4 @@ RUN apt-get install -y --no-install-recommends mailutils postfix
 RUN mkdir /opt/drupal/private && chown www-data:www-data /opt/drupal/private
 
 # Add services to the entrypoint
-RUN sed '$i service postfix start' /usr/local/bin/docker-php-entrypoint | tee /usr/local/bin/docker-php-entrypoint
+RUN sed -i '$i service postfix start' /usr/local/bin/docker-php-entrypoint
