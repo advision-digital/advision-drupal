@@ -24,7 +24,8 @@ RUN { \
 RUN composer --working-dir=/opt/drupal require drupal/upgrade_status:^3.0
 
 # Add Email Capabilities
-RUN apt-get install -y --no-install-recommends mailutils postfix
+RUN apt-get install -y --no-install-recommends mailutils postfix &&\
+    postconf smtp_tls_security_level=encrypt
 
 # Drupal config
 RUN mkdir /opt/drupal/private && chown www-data:www-data /opt/drupal/private
