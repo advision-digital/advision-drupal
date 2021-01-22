@@ -2,7 +2,7 @@ FROM drupal:8.9.12
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
-ARG RELEASE_NAME="$(cat /etc/os-release | grep -P "^C<=VERSION_CODENAME=).*")"
+ARG RELEASE_NAME="$(cat /etc/os-release | grep -P -o "(?<=VERSION_CODENAME=).*")"
 
 RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing apt-utils gnupg &&\
 	echo "deb http://packages.dotdeb.org $RELEASE_NAME all" >> /etc/apt/sources.list &&\
