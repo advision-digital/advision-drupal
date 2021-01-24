@@ -15,8 +15,8 @@ RUN { 											\
 	echo 'opcache.max_accelerated_files=20071'; \
 	echo 'opcache.max_wasted_percentage=10'; 	\
 	echo 'opcache.memory_consumption=512'; 		\
-	echo 'opcache.revalidate_freq=0'; 			\
-	echo 'opcache.validate_timestamps=0'; 		\		
+	echo 'opcache.revalidate_freq=10'; 			\
+	echo 'opcache.validate_timestamps=1'; 		\		
 } > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 RUN { 											\
@@ -70,4 +70,3 @@ RUN apt-get install -y --no-install-recommends   							  									\
 	find /opt/drupal/vendor/ \( -iname tests -o -iname docs -o -iname examples \) -type d -exec rm -rf "{}" +	&&\
 	sed -i '$i service postfix start' /usr/local/bin/docker-php-entrypoint 										&&\
 	sed -i '$i /usr/local/bin/core-updater.sh &' /usr/local/bin/docker-php-entrypoint
-	
